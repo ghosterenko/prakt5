@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 class DoublyLinkedList {
 
@@ -24,7 +24,7 @@ public:
             head = node;
         }
     }
-    void push_back(int value) 
+    void push_back(int value)
     {
         Node* node = new Node(value);
         if (tail == nullptr) {
@@ -37,7 +37,7 @@ public:
             tail = node;
         }
     }
-    void pop_front() 
+    void pop_front()
     {
         Node* temp = head;
         if (head == tail) {
@@ -75,7 +75,7 @@ public:
             std::cout << std::endl;
         }
     }
-    void sort() 
+    void sort()
     {
         bool s = true;
         Node* nodeG = nullptr;
@@ -95,17 +95,17 @@ public:
             nodeG = cur;
         }
     }
-    void sett() 
+    void remove_duplicates()
     {
         Node* cur = head;
 
         while (cur != nullptr) {
-            Node* finder = cur->next;
+            Node* find = cur->next;
 
-            while (finder != nullptr) {
-                if (finder->data == cur->data) {
-                    Node* dup = finder;
-                    finder = finder->next;
+            while (find != nullptr) {
+                if (find->data == cur->data) {
+                    Node* dup = find;
+                    find = find->next;
 
                     dup->prev->next = dup->next;
                     if (dup->next != nullptr)
@@ -114,7 +114,7 @@ public:
                     delete dup;
                 }
                 else {
-                    finder = finder->next;
+                    find = find->next;
                 }
             }
             cur = cur->next;
@@ -200,7 +200,7 @@ int main()
         {
             system("cls");
             std::cout << "Дубликаты удалены" << std::endl;
-            list.sett();
+            list.remove_duplicates();
             std::cin.get();
             break;
         }
@@ -209,7 +209,7 @@ int main()
             std::cout << "Завершено" << std::endl;
             return 0;
         }
-        default :
+        default:
             std::cout << "Ошибка" << std::endl;
             break;
         }
