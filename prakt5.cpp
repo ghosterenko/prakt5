@@ -39,6 +39,9 @@ public:
     }
     void pop_front()
     {
+        if (head == nullptr) 
+            return;
+        
         Node* temp = head;
         if (head == tail) {
             head = nullptr;
@@ -51,6 +54,9 @@ public:
         delete temp;
     }
     void pop_back() {
+        if (tail == nullptr) 
+            return;
+        
         Node* temp = tail;
         if (head == tail) {
             head = nullptr;
@@ -77,6 +83,9 @@ public:
     }
     void sort()
     {
+        if (head == nullptr || head == tail) 
+            return;
+        
         bool s = true;
         Node* nodeG = nullptr;
         Node* cur = nullptr;
@@ -97,6 +106,9 @@ public:
     }
     void remove_duplicates()
     {
+        if (head == nullptr) 
+            return;
+        
         Node* cur = head;
 
         while (cur != nullptr) {
@@ -107,9 +119,16 @@ public:
                     Node* dup = find;
                     find = find->next;
 
-                    dup->prev->next = dup->next;
-                    if (dup->next != nullptr)
+                    if (dup->prev != nullptr) {
+                        dup->prev->next = dup->next;
+                    }
+                    if (dup->next != nullptr) {
                         dup->next->prev = dup->prev;
+                    }
+                    
+                    if (dup == tail) {
+                        tail = dup->prev;
+                    }
 
                     delete dup;
                 }
@@ -175,7 +194,7 @@ int main()
         case '4':
         {
             system("cls");
-            std::cout << "Удалено с начала" << std::endl;
+            std::cout << "Удалено с конца" << std::endl; // Исправлено сообщение
             list.pop_back();
             std::cin.get();
             break;
