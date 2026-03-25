@@ -194,7 +194,7 @@ int main()
         case '4':
         {
             system("cls");
-            std::cout << "Удалено с конца" << std::endl; // Исправлено сообщение
+            std::cout << "Удалено с конца" << std::endl;
             list.pop_back();
             std::cin.get();
             break;
