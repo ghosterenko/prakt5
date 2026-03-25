@@ -39,34 +39,40 @@ public:
     }
     void pop_front()
     {
-        if (head == nullptr) 
-            return;
-        
-        Node* temp = head;
-        if (head == tail) {
-            head = nullptr;
-            tail = nullptr;
+        if (head == nullptr) {
+            std::cout << "Список пуст" << std::endl;
         }
         else {
-            head = head->next;
-            head->prev = nullptr;
+
+            Node* temp = head;
+            if (head == tail) {
+                head = nullptr;
+                tail = nullptr;
+            }
+            else {
+                head = head->next;
+                head->prev = nullptr;
+            }
+            delete temp;
         }
-        delete temp;
     }
     void pop_back() {
-        if (tail == nullptr) 
-            return;
-        
-        Node* temp = tail;
-        if (head == tail) {
-            head = nullptr;
-            tail = nullptr;
+        if (tail == nullptr) {
+            std::cout << "Список пуст" << std::endl;
         }
         else {
-            tail = tail->prev;
-            tail->next = nullptr;
+
+            Node* temp = tail;
+            if (head == tail) {
+                head = nullptr;
+                tail = nullptr;
+            }
+            else {
+                tail = tail->prev;
+                tail->next = nullptr;
+            }
+            delete temp;
         }
-        delete temp;
     }
     void display() {
         if (head == nullptr) {
@@ -83,9 +89,9 @@ public:
     }
     void sort()
     {
-        if (head == nullptr || head == tail) 
+        if (head == nullptr || head == tail)
             return;
-        
+
         bool s = true;
         Node* nodeG = nullptr;
         Node* cur = nullptr;
@@ -106,9 +112,9 @@ public:
     }
     void remove_duplicates()
     {
-        if (head == nullptr) 
+        if (head == nullptr)
             return;
-        
+
         Node* cur = head;
 
         while (cur != nullptr) {
@@ -125,7 +131,7 @@ public:
                     if (dup->next != nullptr) {
                         dup->next->prev = dup->prev;
                     }
-                    
+
                     if (dup == tail) {
                         tail = dup->prev;
                     }
