@@ -50,7 +50,7 @@ public:
                 tail = nullptr;
             }
             else {
-                head = head->next;
+                head = temp->next;
                 head->prev = nullptr;
             }
             delete temp;
@@ -68,7 +68,7 @@ public:
                 tail = nullptr;
             }
             else {
-                tail = tail->prev;
+                tail = temp->prev;
                 tail->next = nullptr;
             }
             delete temp;
@@ -135,6 +135,7 @@ public:
                     if (dup == tail) {
                         tail = dup->prev;
                     }
+                    
 
                     delete dup;
                 }
